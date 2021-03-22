@@ -26,9 +26,9 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
         {
             return await _context.Buildings.ToListAsync();
         }
-      // GET: api/buildings
+        // GET: api/buildings
         // Retrieving a list of Buildings requiring intervention 
-       [HttpGet("Intervention")]
+        [HttpGet("Intervention")]
         public ActionResult<List<Buildings>> GetToFixBuildings()
         {
             IQueryable<Buildings> ToFixBuildingsList = from bat in _context.Buildings
@@ -39,8 +39,5 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             select bat;
             return ToFixBuildingsList.Distinct().ToList();
         }
-       
-
-      
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Threading.Tasks;
-using MySqlConnector;
 
 namespace Rocket_Elevators_Rest_API.Models
 {
@@ -21,8 +18,5 @@ namespace Rocket_Elevators_Rest_API.Models
         public string ElevatorType { get; set; }
 
         public virtual Columns Column { get; set; }
-
-
-        
     }
 }

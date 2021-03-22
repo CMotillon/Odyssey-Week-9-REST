@@ -32,7 +32,7 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
         }
 
         // GET: api/Batteries/{id}
-      [HttpGet("{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Batteries>> GetBattery(long id)
         {
             var battery = await _context.Batteries.FindAsync(id);
@@ -46,7 +46,7 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
         }
 
         
-     [HttpPut("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutmodifyBatterisStatus(long id, [FromBody] Batteries body)
         {
 

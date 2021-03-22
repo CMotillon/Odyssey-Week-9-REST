@@ -30,19 +30,12 @@ namespace Rocket_Elevators_Rest_API.Data
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Elevators> Elevators { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
+        public virtual DbSet<Interventions> Interventions { get; set; }
         public virtual DbSet<Leads> Leads { get; set; }
         public virtual DbSet<Quotes> Quotes { get; set; }
         public virtual DbSet<SchemaMigrations> SchemaMigrations { get; set; }
+        public virtual DbSet<Tracks> Tracks { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySQL("Server=localhost;Port=3306;Database=rocketelevators_development;Uid=sirine;Pwd=admin1234;");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -50,9 +43,7 @@ namespace Rocket_Elevators_Rest_API.Data
             {
                 entity.ToTable("addresses");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.City)
                     .HasColumnName("city")
@@ -118,17 +109,13 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.HasIndex(e => e.BuildingId)
                     .HasName("index_batteries_on_building_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.BatteryType)
                     .HasColumnName("battery_type")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.BuildingId)
-                    .HasColumnName("building_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.BuildingId).HasColumnName("building_id");
 
                 entity.Property(e => e.CertificateOfOperations)
                     .HasColumnName("certificate_of_operations")
@@ -170,23 +157,17 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.HasIndex(e => e.UserId)
                     .HasName("index_blazer_audits_on_user_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.DataSource)
                     .HasColumnName("data_source")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.QueryId)
-                    .HasColumnName("query_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.QueryId).HasColumnName("query_id");
 
                 entity.Property(e => e.Statement).HasColumnName("statement");
 
-                entity.Property(e => e.UserId)
-                    .HasColumnName("user_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.UserId).HasColumnName("user_id");
             });
 
             modelBuilder.Entity<BlazerChecks>(entity =>
@@ -199,25 +180,19 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.HasIndex(e => e.QueryId)
                     .HasName("index_blazer_checks_on_query_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.CheckType)
                     .HasColumnName("check_type")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.CreatorId)
-                    .HasColumnName("creator_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.CreatorId).HasColumnName("creator_id");
 
                 entity.Property(e => e.Emails).HasColumnName("emails");
 
                 entity.Property(e => e.Message).HasColumnName("message");
 
-                entity.Property(e => e.QueryId)
-                    .HasColumnName("query_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.QueryId).HasColumnName("query_id");
 
                 entity.Property(e => e.Schedule)
                     .HasColumnName("schedule")
@@ -240,21 +215,13 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.HasIndex(e => e.QueryId)
                     .HasName("index_blazer_dashboard_queries_on_query_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.DashboardId)
-                    .HasColumnName("dashboard_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.DashboardId).HasColumnName("dashboard_id");
 
-                entity.Property(e => e.Position)
-                    .HasColumnName("position")
-                    .HasColumnType("int(11)");
+                entity.Property(e => e.Position).HasColumnName("position");
 
-                entity.Property(e => e.QueryId)
-                    .HasColumnName("query_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.QueryId).HasColumnName("query_id");
             });
 
             modelBuilder.Entity<BlazerDashboards>(entity =>
@@ -264,13 +231,9 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.HasIndex(e => e.CreatorId)
                     .HasName("index_blazer_dashboards_on_creator_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.CreatorId)
-                    .HasColumnName("creator_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.CreatorId).HasColumnName("creator_id");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("name")
@@ -284,13 +247,9 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.HasIndex(e => e.CreatorId)
                     .HasName("index_blazer_queries_on_creator_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.CreatorId)
-                    .HasColumnName("creator_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.CreatorId).HasColumnName("creator_id");
 
                 entity.Property(e => e.DataSource)
                     .HasColumnName("data_source")
@@ -316,17 +275,11 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.HasIndex(e => e.BuildingId)
                     .HasName("index_building_details_on_building_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.BuildingId)
-                    .HasColumnName("building_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.BuildingId).HasColumnName("building_id");
 
-                entity.Property(e => e.InformationKey)
-                    .HasColumnName("information_key")
-                    .HasMaxLength(255);
+                entity.Property(e => e.InformationKey).HasColumnName("information_key");
 
                 entity.Property(e => e.Value)
                     .HasColumnName("value")
@@ -345,17 +298,13 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.HasIndex(e => e.CustomerId)
                     .HasName("index_buildings_on_customer_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.AddressBuilding)
                     .HasColumnName("address_building")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.CustomerId)
-                    .HasColumnName("customer_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.CustomerId).HasColumnName("customer_id");
 
                 entity.Property(e => e.EmailAdministrator)
                     .HasColumnName("email_administrator")
@@ -394,13 +343,9 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.HasIndex(e => e.BatteryId)
                     .HasName("index_columns_on_battery_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.BatteryId)
-                    .HasColumnName("battery_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.BatteryId).HasColumnName("battery_id");
 
                 entity.Property(e => e.ColumnType)
                     .HasColumnName("column_type")
@@ -414,9 +359,7 @@ namespace Rocket_Elevators_Rest_API.Data
                     .HasColumnName("notes")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.NumberOfFloorsServed)
-                    .HasColumnName("number_of_floors_served")
-                    .HasColumnType("int(11)");
+                entity.Property(e => e.NumberOfFloorsServed).HasColumnName("number_of_floors_served");
 
                 entity.Property(e => e.Status)
                     .HasColumnName("status")
@@ -435,9 +378,7 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.HasIndex(e => e.UserId)
                     .HasName("index_customers_on_user_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.CompanyAddress)
                     .HasColumnName("company_address")
@@ -477,9 +418,7 @@ namespace Rocket_Elevators_Rest_API.Data
                     .HasColumnName("technical_authority_phone")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.UserId)
-                    .HasColumnName("user_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.UserId).HasColumnName("user_id");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Customers)
@@ -489,23 +428,19 @@ namespace Rocket_Elevators_Rest_API.Data
 
             modelBuilder.Entity<Elevators>(entity =>
             {
-               entity.ToTable("elevators");
+                entity.ToTable("elevators");
 
                 entity.HasIndex(e => e.ColumnId)
                     .HasName("index_elevators_on_column_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.CertificateOfInspection)
                     .IsRequired()
                     .HasColumnName("certificate_of_inspection")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.ColumnId)
-                    .HasColumnName("column_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.ColumnId).HasColumnName("column_id");
 
                 entity.Property(e => e.DateOfCommissioning)
                     .HasColumnName("date_of_commissioning")
@@ -547,8 +482,6 @@ namespace Rocket_Elevators_Rest_API.Data
                     .WithMany(p => p.Elevators)
                     .HasForeignKey(d => d.ColumnId)
                     .HasConstraintName("fk_rails_69442d7bc2");
-
-
             });
 
             modelBuilder.Entity<Employees>(entity =>
@@ -558,9 +491,7 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.HasIndex(e => e.UserId)
                     .HasName("index_employees_on_user_id");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.FirstName)
                     .HasColumnName("first_name")
@@ -574,9 +505,7 @@ namespace Rocket_Elevators_Rest_API.Data
                     .HasColumnName("title")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.UserId)
-                    .HasColumnName("user_id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.UserId).HasColumnName("user_id");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Employees)
@@ -584,13 +513,48 @@ namespace Rocket_Elevators_Rest_API.Data
                     .HasConstraintName("fk_rails_dcfd3d4fc3");
             });
 
+            modelBuilder.Entity<Interventions>(entity =>
+            {
+                entity.ToTable("interventions");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Author).HasColumnName("author");
+
+                entity.Property(e => e.BatteryId).HasColumnName("battery_id");
+
+                entity.Property(e => e.BuildingId).HasColumnName("building_id");
+
+                entity.Property(e => e.ColumnId).HasColumnName("column_id");
+
+                entity.Property(e => e.CustomerId).HasColumnName("customer_id");
+
+                entity.Property(e => e.ElevatorId).HasColumnName("elevator_id");
+
+                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+
+                entity.Property(e => e.Report)
+                    .HasColumnName("report")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Result)
+                    .HasColumnName("result")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Status)
+                    .HasColumnName("status")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.InterventionStart).HasColumnName("intervention_start");
+
+                entity.Property(e => e.InterventionEnd).HasColumnName("intervention_end");
+            });
+
             modelBuilder.Entity<Leads>(entity =>
             {
                 entity.ToTable("leads");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Attachment)
                     .HasColumnName("attachment")
@@ -623,17 +587,13 @@ namespace Rocket_Elevators_Rest_API.Data
                 entity.Property(e => e.ProjectName)
                     .HasColumnName("project_name")
                     .HasMaxLength(255);
-
-                entity.Property(e => e.ContactRequestDate).HasColumnName("contact_request_date");
             });
 
             modelBuilder.Entity<Quotes>(entity =>
             {
                 entity.ToTable("quotes");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.BuildingType)
                     .HasColumnName("building_type")
@@ -643,9 +603,7 @@ namespace Rocket_Elevators_Rest_API.Data
                     .HasColumnName("company_name")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.ElevatorAmount)
-                    .HasColumnName("elevator_amount")
-                    .HasColumnType("int(11)");
+                entity.Property(e => e.ElevatorAmount).HasColumnName("elevator_amount");
 
                 entity.Property(e => e.ElevatorInstallationFees)
                     .HasColumnName("elevator_installation_fees")
@@ -659,9 +617,7 @@ namespace Rocket_Elevators_Rest_API.Data
                     .HasColumnName("elevator_unit_price")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.ElevatorsRequired)
-                    .HasColumnName("elevators_required")
-                    .HasColumnType("int(11)");
+                entity.Property(e => e.ElevatorsRequired).HasColumnName("elevators_required");
 
                 entity.Property(e => e.Email)
                     .HasColumnName("email")
@@ -671,25 +627,15 @@ namespace Rocket_Elevators_Rest_API.Data
                     .HasColumnName("final_price")
                     .HasMaxLength(255);
 
-                entity.Property(e => e.MaximumOccupancy)
-                    .HasColumnName("maximum_occupancy")
-                    .HasColumnType("int(11)");
+                entity.Property(e => e.MaximumOccupancy).HasColumnName("maximum_occupancy");
 
-                entity.Property(e => e.NumberOfApartments)
-                    .HasColumnName("number_of_apartments")
-                    .HasColumnType("int(11)");
+                entity.Property(e => e.NumberOfApartments).HasColumnName("number_of_apartments");
 
-                entity.Property(e => e.NumberOfBasements)
-                    .HasColumnName("number_of_basements")
-                    .HasColumnType("int(11)");
+                entity.Property(e => e.NumberOfBasements).HasColumnName("number_of_basements");
 
-                entity.Property(e => e.NumberOfElevators)
-                    .HasColumnName("number_of_elevators")
-                    .HasColumnType("int(11)");
+                entity.Property(e => e.NumberOfElevators).HasColumnName("number_of_elevators");
 
-                entity.Property(e => e.NumberOfFloors)
-                    .HasColumnName("number_of_floors")
-                    .HasColumnType("int(11)");
+                entity.Property(e => e.NumberOfFloors).HasColumnName("number_of_floors");
 
                 entity.Property(e => e.ProductLine)
                     .HasColumnName("product_line")
@@ -708,6 +654,33 @@ namespace Rocket_Elevators_Rest_API.Data
                     .HasMaxLength(255);
             });
 
+            modelBuilder.Entity<Tracks>(entity =>
+            {
+                entity.ToTable("tracks");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Artist)
+                    .HasColumnName("artist")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Image)
+                    .HasColumnName("image")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Name)
+                    .HasColumnName("name")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.Preview)
+                    .HasColumnName("preview")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.SpotifyId)
+                    .HasColumnName("spotify_id")
+                    .HasMaxLength(255);
+            });
+
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.ToTable("users");
@@ -720,9 +693,7 @@ namespace Rocket_Elevators_Rest_API.Data
                     .HasName("index_users_on_reset_password_token")
                     .IsUnique();
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Email)
                     .IsRequired()
