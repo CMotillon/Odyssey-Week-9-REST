@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/cedric/.dotnet/store/|arch|/|tfm|",
+      "/home/cedric/.nuget/packages"
+    ]
+  }
+}

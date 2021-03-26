@@ -1,7 +1,8 @@
 
-"# Rocket-Elevators-Rest-API" 
+# Rocket-Elevators-Rest-API
 
-
+<details>
+<summary><i>CLICK TO EXPAND</i></summary>
 
 In this project we Created Rest Apis for Rocket Elevators. and the link for our differents Apis are below and you can test it in Postman
 here is example of how u can access our api
@@ -91,3 +92,12 @@ We use difference Controllers to expose Async API Endpoints for CRUD operations.
             return battery;
         }
 And we can see the results our our request in Postman.
+</details>
+
+# Intervention Endpoints
+
+GET: https://rocket-elevators-cm.azurewebsites.net/api/Interventions
+
+PUT: https://rocket-elevators-cm.azurewebsites.net/api/Interventions/InProgress/{id}
+
+PUT: https://rocket-elevators-cm.azurewebsites.net/api/Interventions/Completed/{id}

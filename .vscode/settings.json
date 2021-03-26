@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/db4a27d5-c5fc-4896-8f96-1655c8da24e4/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/Rocket-Elevators-CM",
+    "appService.deploySubpath": "publish"
+}
