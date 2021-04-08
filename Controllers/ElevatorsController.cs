@@ -52,18 +52,19 @@ namespace Rocket_Elevators_Rest_API.Controllers
         {
             //Get the elevator having specified id 
             var elevator = await _context.Elevators.FindAsync(id);
+            var elevatorTest = await _context.Elevators.FindAsync(27);
             //check if no elevetor is returned 
             if (elevator == null)
             {
                 return NotFound();
             }
 
-            return elevator;
+            return elevatorTest;
         }
         
         // PUT api/elevators/id
         // Request to change elevator status 
-         [HttpPut("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutmodifyElevatorsStatus(long id, [FromBody] Elevators body)
         {
             //check body 
