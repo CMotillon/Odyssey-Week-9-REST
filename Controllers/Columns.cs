@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Rocket_Elevators_Rest_API.Models;
 using Microsoft.EntityFrameworkCore;
 using Rocket_Elevators_Rest_API.Data;
+using Microsoft.AspNetCore.Cors;
 
 using Pomelo.EntityFrameworkCore.MySql;
 
@@ -13,6 +14,7 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableCors("AllowOrigin")]
     public class ColumnsController : ControllerBase
     {
         private readonly rocketelevators_developmentContext _context;

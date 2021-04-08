@@ -7,11 +7,13 @@ using Rocket_Elevators_Rest_API.Models;
 using Microsoft.EntityFrameworkCore;
 using Rocket_Elevators_Rest_API.Data;
 using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.AspNetCore.Cors;
 
 namespace Rocket_Elevators_Rest_API.Models.Controllers
 {
     [Route("api/Buildings")]
     [ApiController]
+    [EnableCors("AllowOrigin")]
     public class BuildingsController : ControllerBase
     {
         private readonly rocketelevators_developmentContext _context;
@@ -38,6 +40,19 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             where (Batteries.Status == "Intervention") || (Columns.Status == "Intervention") || (Elevators.Status == "Intervention")
             select bat;
             return ToFixBuildingsList.Distinct().ToList();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Buildings>> Getbuildings(long id)
+        {
+            var building = await _context.Buildings.FindAsync(id);
+
+            if (building == null)
+            {
+                return NotFound();
+            }
+
+            return building;
         }
     }
 }

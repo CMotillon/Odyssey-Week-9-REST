@@ -7,11 +7,13 @@ using Rocket_Elevators_Rest_API.Models;
 using Microsoft.EntityFrameworkCore;
 using Rocket_Elevators_Rest_API.Data;
 using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.AspNetCore.Cors;
 
 namespace Rocket_Elevators_Rest_API.Models.Controllers
 {
     [Route("api/Interventions")]
     [ApiController]
+    [EnableCors("AllowOrigin")]
     public class InterventionsController : ControllerBase
     {
         private readonly rocketelevators_developmentContext _context;

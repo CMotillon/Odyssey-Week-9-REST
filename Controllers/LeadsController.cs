@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Rocket_Elevators_Rest_API.Models;
 using System.Collections.Generic;
 using Rocket_Elevators_Rest_API.Data;
+using Microsoft.AspNetCore.Cors;
 
 namespace Rocket_Elevators_Rest_API.Models.Controllers
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowOrigin")]
     public class LeadsController : ControllerBase
     {
         //Create context attribute

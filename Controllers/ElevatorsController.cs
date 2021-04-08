@@ -6,11 +6,13 @@ using Rocket_Elevators_Rest_API.Data;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
 
 
 namespace Rocket_Elevators_Rest_API.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowOrigin")]
     public class ElevatorsController : ControllerBase
     {
         //Declare context attribute
@@ -20,6 +22,12 @@ namespace Rocket_Elevators_Rest_API.Controllers
         public ElevatorsController(rocketelevators_developmentContext context)
         {
             _context = context;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Elevators>>> Getelevators()
+        {
+            return await _context.Elevators.ToListAsync();
         }
 
 
@@ -86,6 +94,5 @@ namespace Rocket_Elevators_Rest_API.Controllers
         {
             return _context.Elevators.Any(e => e.Id == id);
         }
-
     }
 }

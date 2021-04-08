@@ -40,6 +40,13 @@ namespace Rocket_Elevators_Rest_API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rocket_Elevators_Rest_API", Version = "v1" });
             });
             services.AddTransient<AppDb>(_ => new AppDb(Configuration["ConnectionStrings:DefaultConnection"]));
+
+            services.AddCors(options => {
+                options.AddPolicy("AllowOrigin",
+                    builder => {
+                        builder.WithOrigins("https://localhost:5001").AllowAnyOrigin().AllowAnyHeader();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +62,8 @@ namespace Rocket_Elevators_Rest_API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowOrigin");
 
             app.UseAuthorization();
 
