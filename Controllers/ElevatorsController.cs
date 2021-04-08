@@ -39,8 +39,8 @@ namespace Rocket_Elevators_Rest_API.Controllers
             //Prepare the request 
             IQueryable<Elevators> elevators = from l in _context.Elevators
             //define condition status should be equal to given values 
-                                             where l.Status == status
-                                             select l;
+            where l.Status == status
+            select l;
             //show results 
             return elevators.ToList();
 
