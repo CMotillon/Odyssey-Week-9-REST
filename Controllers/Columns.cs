@@ -119,6 +119,29 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             
         }
 
+        [HttpPut("Edit/{id}")]
+        public async Task<IActionResult> columnEdit(long id, [FromBody] Columns body)
+        {
+            var colum = await _context.Columns.FindAsync(id);
+            colum.Information = body.Information;
+            colum.Notes = body.Notes;          
+            try
+            {
+                //save change 
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                //catch error - elevetor doesn't exist 
+                if (!columnExists(id))
+                    return NotFound();
+                else
+                    throw;
+            }
+            //return succeed message 
+            return new OkObjectResult("success");
+        }
+
         private bool columnExists(long id)
         {
             return _context.Columns.Any(e => e.Id == id);

@@ -115,6 +115,29 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             return battery;
         }
 
+        [HttpPut("Edit/{id}")]
+        public async Task<IActionResult> columnEdit(long id, [FromBody] Batteries body)
+        {
+            var bat = await _context.Batteries.FindAsync(id);
+            bat.Information = body.Information;
+            bat.Notes = body.Notes;          
+            try
+            {
+                //save change 
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                //catch error - elevetor doesn't exist 
+                if (!BatteriesExists(id))
+                    return NotFound();
+                else
+                    throw;
+            }
+            //return succeed message 
+            return new OkObjectResult("success");
+        }
+
         private bool BatteriesExists(long id)
         {
             return _context.Batteries.Any(e => e.Id == id);
