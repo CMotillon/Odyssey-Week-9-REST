@@ -90,6 +90,33 @@ namespace Rocket_Elevators_Rest_API.Controllers
             return new OkObjectResult("success");
         }
 
+        [HttpPut("Edit/{id}")]
+        public async Task<IActionResult> elevatorEdit(long id, [FromBody] Elevators body)
+        {
+            if (body.Status == null)
+            {
+                return BadRequest();
+            }
+            var elevator = await _context.Elevators.FindAsync(id);
+            elevator.Information = body.Information;
+            elevator.Notes = body.Notes;          
+            try
+            {
+                //save change 
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                //catch error - elevetor doesn't exist 
+                if (!elevatorExists(id))
+                    return NotFound();
+                else
+                    throw;
+            }
+            //return succeed message 
+            return new OkObjectResult("success");
+        }
+
         private bool elevatorExists(long id)
         {
             return _context.Elevators.Any(e => e.Id == id);
