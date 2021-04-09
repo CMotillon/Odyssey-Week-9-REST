@@ -80,5 +80,11 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
         {
             return _context.Interventions.Any(e => e.Id == id);
         }
+
+        [HttpGet("Employees")]
+        public async Task<ActionResult<IEnumerable<Employees>>> Getcolumns()
+        {
+            return await _context.Employees.ToListAsync();
+        }
     }
 }
