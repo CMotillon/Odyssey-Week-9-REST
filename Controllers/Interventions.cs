@@ -86,5 +86,14 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
         {
             return await _context.Employees.ToListAsync();
         }
+
+        [HttpPost("Submit")]
+        public async Task<ActionResult<Interventions>> PostIntervention(Interventions intervention)
+        {
+            _context.Interventions.Add(intervention);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("PostIntervention", new { id = intervention.Id }, intervention);
+        }
     }
 }
