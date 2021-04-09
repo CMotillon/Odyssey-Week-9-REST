@@ -93,10 +93,6 @@ namespace Rocket_Elevators_Rest_API.Controllers
         [HttpPut("Edit/{id}")]
         public async Task<IActionResult> elevatorEdit(long id, [FromBody] Elevators body)
         {
-            if (body.Status == null)
-            {
-                return BadRequest();
-            }
             var elevator = await _context.Elevators.FindAsync(id);
             elevator.Information = body.Information;
             elevator.Notes = body.Notes;          
