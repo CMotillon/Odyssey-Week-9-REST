@@ -122,6 +122,12 @@ namespace Rocket_Elevators_Rest_API.Controllers
             return CreatedAtAction("PostContract", new { address = contract.Address }, contract);
         }
 
+        [HttpGet("GetContracts")]
+        public async Task<ActionResult<IEnumerable<Contract>>> GetContract()
+        {
+            return await _context.Contract.ToListAsync();
+        }
+
         private bool elevatorExists(long id)
         {
             return _context.Elevators.Any(e => e.Id == id);
