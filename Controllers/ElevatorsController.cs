@@ -113,7 +113,7 @@ namespace Rocket_Elevators_Rest_API.Controllers
             return new OkObjectResult("success");
         }
 
-        [HttpPost("Submit")]
+        [HttpPost("Contract")]
         public async Task<ActionResult<Contract>> PostContract(Contract contract)
         {
             _context.Contract.Add(contract);
