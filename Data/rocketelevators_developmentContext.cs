@@ -27,6 +27,7 @@ namespace Rocket_Elevators_Rest_API.Data
         public virtual DbSet<BuildingDetails> BuildingDetails { get; set; }
         public virtual DbSet<Buildings> Buildings { get; set; }
         public virtual DbSet<Columns> Columns { get; set; }
+        public virtual DbSet<Contract> Contract { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Elevators> Elevators { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
@@ -369,6 +370,17 @@ namespace Rocket_Elevators_Rest_API.Data
                     .WithMany(p => p.Columns)
                     .HasForeignKey(d => d.BatteryId)
                     .HasConstraintName("fk_rails_021eb14ac4");
+            });
+
+            modelBuilder.Entity<Contract>(entity =>
+            {
+                entity.ToTable("contracts");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Address)
+                    .HasColumnName("address")
+                    .HasMaxLength(255);
             });
 
             modelBuilder.Entity<Customers>(entity =>

@@ -113,6 +113,15 @@ namespace Rocket_Elevators_Rest_API.Controllers
             return new OkObjectResult("success");
         }
 
+        [HttpPost("Submit")]
+        public async Task<ActionResult<Contract>> PostContract(Contract contract)
+        {
+            _context.Contract.Add(contract);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("PostContract", new { address = contract.Address }, contract);
+        }
+
         private bool elevatorExists(long id)
         {
             return _context.Elevators.Any(e => e.Id == id);
