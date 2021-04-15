@@ -114,12 +114,12 @@ namespace Rocket_Elevators_Rest_API.Controllers
         }
 
         [HttpPost("Contract")]
-        public async Task<ActionResult<Contract>> PostContract(Contract contracts)
+        public async Task<ActionResult<Contract>> PostContract(Contract contract)
         {
-            _context.Contract.Add(contracts);
+            _context.Contract.Add(contract);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("PostContract", new { address = contracts.Address }, contracts);
+            return CreatedAtAction("PostContract", new { address = contract.Address }, contract);
         }
 
         [HttpGet("GetContracts")]
