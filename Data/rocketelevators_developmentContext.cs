@@ -378,7 +378,7 @@ namespace Rocket_Elevators_Rest_API.Data
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Address)
+                entity.Property(e => e.address)
                     .HasColumnName("address")
                     .HasMaxLength(255);
             });
