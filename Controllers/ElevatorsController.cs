@@ -121,7 +121,7 @@ namespace Rocket_Elevators_Rest_API.Controllers
             _context.Contract.Add(contract);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("PostContract", new { address = contract.Address }, contract);
+            return CreatedAtAction("PostContract", new { address = contract.address }, contract);
         }
 
         [HttpGet("GetContracts")]
