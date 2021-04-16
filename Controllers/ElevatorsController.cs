@@ -124,6 +124,34 @@ namespace Rocket_Elevators_Rest_API.Controllers
 
             return CreatedAtAction("PostContract", new { address = contract.Address }, contract);
         }
+        [HttpPut("Contractedit/{address}")]
+        public async Task<IActionResult> elevatorEdit(string address, [FromBody] Contract body)
+        {
+            var contract = await _context.Contract.FindAsync(address);
+            
+           
+            contract.Batteries = body.Batteries;
+            contract.Columns = body.Columns;
+            contract.Elevators = body.Elevators;
+            contract.Doors = body.Doors;
+            contract.Buttons = body.Buttons;
+            contract.Display = body.Display  ;        
+            try
+            {
+                //save change 
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                //catch error - elevetor doesn't exist 
+                if (!contractExists(address))
+                    return NotFound();
+                else
+                    throw;
+            }
+            //return succeed message 
+            return new OkObjectResult("success");
+        }
 
         [HttpGet("GetContracts")]
         public async Task<ActionResult<IEnumerable<Contract>>> GetContract()
@@ -134,6 +162,10 @@ namespace Rocket_Elevators_Rest_API.Controllers
         private bool elevatorExists(long id)
         {
             return _context.Elevators.Any(e => e.Id == id);
+        }
+
+        private bool contractExists(string address){
+            return _context.Contract.Any(e => e.Address == address);
         }
     }
 }
