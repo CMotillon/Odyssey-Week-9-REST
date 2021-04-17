@@ -135,7 +135,7 @@ namespace Rocket_Elevators_Rest_API.Controllers
             contract.Elevators = body.Elevators;
             contract.Doors = body.Doors;
             contract.Buttons = body.Buttons;
-            contract.Display = body.Display  ;        
+            contract.Displays = body.Displays;        
             try
             {
                 //save change 

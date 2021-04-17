@@ -12,8 +12,8 @@ namespace Rocket_Elevators_Rest_API.Models
         public int Elevators {get; set;}
         public int Buttons {get; set;}
         public int Doors {get; set;} 
-        public int Display {get; set;}
-         
+        public int Displays {get; set;}
+
 
     }
 }

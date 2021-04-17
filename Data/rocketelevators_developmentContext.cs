@@ -383,11 +383,11 @@ namespace Rocket_Elevators_Rest_API.Data
                     .HasMaxLength(255);
 
                 entity.Property(e => e.Batteries).HasColumnName("batteries");
-                entity.Property(e => e.Batteries).HasColumnName("columns");
-                entity.Property(e => e.Batteries).HasColumnName("elevators");
-                entity.Property(e => e.Batteries).HasColumnName("doors");
-                entity.Property(e => e.Batteries).HasColumnName("displays");
-                entity.Property(e => e.Batteries).HasColumnName("buttons");
+                entity.Property(e => e.Columns).HasColumnName("columns");
+                entity.Property(e => e.Elevators).HasColumnName("elevators");
+                entity.Property(e => e.Doors).HasColumnName("doors");
+                entity.Property(e => e.Displays).HasColumnName("displays");
+                entity.Property(e => e.Buttons).HasColumnName("buttons");
                 
 
             });
