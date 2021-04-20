@@ -33,6 +33,7 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             return Leads.ToList();
 
         }
+
         //Retrieving a list of Leads created in the last 30 days who have not yet become customers.
         [HttpGet("30daysnotcustomers")]
          public IEnumerable<Leads> GetLead()
