@@ -22,16 +22,11 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
         }
 
         // Get list of leads                                    
-        // GET: api/leads           
+        // GET: api/leads
         [HttpGet]
-        public IEnumerable<Leads> GetLeads()
+        public async Task<ActionResult<IEnumerable<Leads>>> GetLeads()
         {
-          //Prepare the query 
-            IQueryable<Leads> Leads =
-            from l in _context.Leads
-            select l;
-            return Leads.ToList();
-
+            return await _context.Leads.ToListAsync();
         }
 
         //Retrieving a list of Leads created in the last 30 days who have not yet become customers.
