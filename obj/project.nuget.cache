@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IKG6MvuP9wQEmvinmcnyPeMblWRyoAVHFoYZeqISHy70hYCI6yOrkq972qKQSA3yvTiQ2/vSU3F+ai/1TxB2oQ==",
+  "dgSpecHash": "wB/NkCbdpmOFSv9cOuFxAOHAaWj4oxY75stiFyBSTYGQP4SCzL6gevEdYMsZREYU3GgbhTDL1dtxrM53HhutiA==",
   "success": true,
   "projectFilePath": "/mnt/c/Odyssey-Week-9-REST/Rocket-Elevators-Rest-API.csproj",
   "expectedPackageFiles": [
@@ -67,7 +67,7 @@
     "/home/cedric/.nuget/packages/system.componentmodel.annotations/4.7.0/system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "/home/cedric/.nuget/packages/system.configuration.configurationmanager/4.4.1/system.configuration.configurationmanager.4.4.1.nupkg.sha512",
     "/home/cedric/.nuget/packages/system.console/4.0.0/system.console.4.0.0.nupkg.sha512",
-    "/home/cedric/.nuget/packages/system.diagnostics.debug/4.0.11/system.diagnostics.debug.4.0.11.nupkg.sha512",
+    "/home/cedric/.nuget/packages/system.diagnostics.debug/4.3.0/system.diagnostics.debug.4.3.0.nupkg.sha512",
     "/home/cedric/.nuget/packages/system.diagnostics.diagnosticsource/4.7.1/system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
     "/home/cedric/.nuget/packages/system.diagnostics.tools/4.0.1/system.diagnostics.tools.4.0.1.nupkg.sha512",
     "/home/cedric/.nuget/packages/system.diagnostics.tracesource/4.0.0/system.diagnostics.tracesource.4.0.0.nupkg.sha512",
