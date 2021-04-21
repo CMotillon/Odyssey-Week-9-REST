@@ -30,8 +30,8 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             int nb_buildings = await _context.Buildings.ToList().Count();
             int nb_customers = await _context.Customers.ToList().Count();
 
-            string response = "There are currently" + nb_elevators + "elevators deployed in the" + nb_buildings + "buildings of your" + nb_customers + "customers.";
-            return response;
+            string answer = "There are currently" + nb_elevators + "elevators deployed in the" + nb_buildings + "buildings of your" + nb_customers + "customers.";
+            return answer;
         }
     }
 }
