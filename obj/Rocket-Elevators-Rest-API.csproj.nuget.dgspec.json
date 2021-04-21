@@ -1,28 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\15149\\Odyssey-Week-9-REST\\Rocket-Elevators-Rest-API.csproj": {}
+    "/mnt/c/Odyssey-Week-9-REST/Rocket-Elevators-Rest-API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\15149\\Odyssey-Week-9-REST\\Rocket-Elevators-Rest-API.csproj": {
+    "/mnt/c/Odyssey-Week-9-REST/Rocket-Elevators-Rest-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\15149\\Odyssey-Week-9-REST\\Rocket-Elevators-Rest-API.csproj",
+        "projectUniqueName": "/mnt/c/Odyssey-Week-9-REST/Rocket-Elevators-Rest-API.csproj",
         "projectName": "Rocket-Elevators-Rest-API",
-        "projectPath": "C:\\Users\\15149\\Odyssey-Week-9-REST\\Rocket-Elevators-Rest-API.csproj",
-        "packagesPath": "C:\\Users\\15149\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\15149\\Odyssey-Week-9-REST\\obj\\",
+        "projectPath": "/mnt/c/Odyssey-Week-9-REST/Rocket-Elevators-Rest-API.csproj",
+        "packagesPath": "/home/cedric/.nuget/packages/",
+        "outputPath": "/mnt/c/Odyssey-Week-9-REST/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\15149\\Odyssey-Week-9-REST\\NuGet.Config",
-          "C:\\Users\\15149\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/mnt/c/Odyssey-Week-9-REST/nuget.config",
+          "/home/cedric/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -103,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }

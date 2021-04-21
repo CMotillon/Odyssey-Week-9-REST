@@ -1,9 +1,12 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Rocket_Elevators_Rest_API.Models;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using Rocket_Elevators_Rest_API.Data;
+using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.AspNetCore.Cors;
 
 namespace Rocket_Elevators_Rest_API.Models.Controllers
