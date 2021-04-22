@@ -46,6 +46,20 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
 
             return column;
         }
+        
+        [HttpGet("status/{id}")]
+        public async Task<ActionResult<String>> GetElevatorStatus(long id)
+        {
+            //Get the elevator having specified id 
+            var elevator = await _context.Columns.FindAsync(id);
+            //check if no elevetor is returned 
+            if (elevator == null)
+            {
+                return NotFound();
+            }
+
+            return elevator.Status.ToString();
+        }
       
       
         

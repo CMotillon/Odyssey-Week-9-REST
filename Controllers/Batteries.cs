@@ -45,6 +45,20 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
 
             return battery;
         }
+        
+        [HttpGet("status/{id}")]
+        public async Task<ActionResult<String>> GetElevatorStatus(long id)
+        {
+            //Get the elevator having specified id 
+            var elevator = await _context.Batteries.FindAsync(id);
+            //check if no elevetor is returned 
+            if (elevator == null)
+            {
+                return NotFound();
+            }
+
+            return elevator.Status.ToString();
+        }
 
         
         [HttpPut("{id}")]
