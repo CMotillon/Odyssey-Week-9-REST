@@ -41,10 +41,10 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
             return await _context.Quotes.ToListAsync();
         }
 
-        [HttpGet("Leads")]
-        public async Task<ActionResult<IEnumerable<Leads>>> GetLeads()
+        [HttpGet("Cities")]
+        public async Task<ActionResult<IEnumerable<Addresses>>> GetAddresses()
         {
-            return await _context.Leads.ToListAsync();
+            return await _context.Addresses.ToListAsync();
         }
 
         // GET: api/buildings

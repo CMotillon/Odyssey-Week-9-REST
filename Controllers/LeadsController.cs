@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Cors;
 
 namespace Rocket_Elevators_Rest_API.Models.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Leads")]
     [ApiController]
     [EnableCors("AllowOrigin")]
     public class LeadsController : ControllerBase
