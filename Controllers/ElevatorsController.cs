@@ -30,6 +30,15 @@ namespace Rocket_Elevators_Rest_API.Controllers
             return await _context.Elevators.ToListAsync();
         }
 
+        [HttpGet("statuscheck")]
+        public IEnumerable<Elevators> GetBadStatus()
+        {
+            IQueryable<Elevators> elevators = from l in _context.Elevators
+            where l.Status == "Stopped"
+            select l;
+            return elevators.ToList();
+        }
+
 
         // GET api/elevators
         [HttpGet("status/{status}")]
