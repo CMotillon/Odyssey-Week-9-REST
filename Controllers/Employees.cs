@@ -34,8 +34,7 @@ namespace Rocket_Elevators_Rest_API.Models.Controllers
         [HttpGet("Check/{email}")]
         public bool Employees(string email)
         {
-            var user = _context.Users.Any(u => u.Email == email);
-            return _context.Employees.Any(e => e.Id == user.id);
+            return _context.Users.Any(u => u.Email == email);
         }
     }
 }
