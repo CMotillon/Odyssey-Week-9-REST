@@ -83,6 +83,30 @@ namespace Rocket_Elevators_Rest_API.Controllers
 
             return elevator.Status.ToString();
         }
+
+        [HttpPut("changeStatus/{id}")]
+        public async Task<IActionResult> PutmodifyElevatorsStatus(long id)
+        {
+            var elevator = await _context.Elevators.FindAsync(id);
+
+            elevator.Status = "Moving";          
+            try
+            {
+                //save change 
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                //catch error - elevetor doesn't exist 
+                if (!elevatorExists(id))
+                    return NotFound();
+                else
+                    throw;
+            }
+            //return succeed message 
+            return new OkObjectResult("success");
+        }
+        
         // PUT api/elevators/id
         // Request to change elevator status 
         [HttpPut("{id}")]
